@@ -1,51 +1,143 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# 🌟 **Laravel Inventory Management System** 🌟
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Sistem ini adalah aplikasi manajemen inventaris berbasis Laravel. Dengan fitur CRUD lengkap untuk kategori barang, barang, satuan unit (UOM), dan inventaris masuk (inbound) serta keluar (outbound), sistem ini dirancang untuk mempermudah pengelolaan inventaris.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## 💻 **Teknologi yang Digunakan**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. **Backend**: Laravel 10.x
+2. **Frontend**: Blade Template dengan Bootstrap 5
+3. **Database**: MySQL
+4. **JavaScript Library**: jQuery dan DataTables
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+---
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+## **📂 Struktur Folder**
+### **Database**
+- file db_lvinventory.sql
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+### **Views**
 
-## Laravel Sponsors
+- **`include/`**
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+  - `head.blade.php` : Template untuk CSS, JavaScript, dan navbar.
+  - `footer.blade.php` : Template untuk footer dengan import script (jQuery, Bootstrap, DataTables).
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+- **`inventory/`**
 
-## Contributing
+  - `index.blade.php` : Halaman utama untuk melihat data inbound dan outbound.
+  - `edit.blade.php` : Form untuk mengedit data inbound/outbound.
+  - `tambah.blade.php` : Form untuk menambahkan data inbound/outbound.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+- **`item/`**
 
-## Security Vulnerabilities
+  - `index.blade.php` : Halaman utama untuk melihat daftar item.
+  - `edit.blade.php` : Form untuk mengedit item.
+  - `tambah.blade.php` : Form untuk menambahkan item baru.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+- **`item_category/`**
 
-## License
+  - `index.blade.php` : Halaman utama untuk melihat kategori barang.
+  - `edit.blade.php` : Form untuk mengedit kategori barang.
+  - `tambah.blade.php` : Form untuk menambahkan kategori baru.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+- **`uom/`**
+
+  - `index.blade.php` : Halaman utama untuk melihat daftar satuan unit (UOM).
+  - `edit.blade.php` : Form untuk mengedit UOM.
+  - `tambah.blade.php` : Form untuk menambahkan UOM baru.
+
+---
+
+## 📚 **Database**
+
+### **Nama Database: ****`db_lvinventory`**
+
+Tabel yang digunakan:
+
+1. **`item`**: Data barang (SKU, nama, kategori, stok, status).
+2. **`item_category`**: Kategori barang.
+3. **`uom`**: Satuan unit (Unit of Measurement).
+4. **`inbound`**: Data barang masuk.
+5. **`outbound`**: Data barang keluar.
+
+---
+
+## 📘 **Panduan Instalasi**
+
+### **1. Clone Repository**
+
+```bash
+git clone <URL_REPOSITORY>
+cd <nama_proyek>
+```
+
+### **2. Install Dependency**
+
+- **Composer**:
+  ```bash
+  composer install
+  ```
+- **NPM**:
+  ```bash
+  npm install && npm run dev
+  ```
+
+### **3. Konfigurasi Environment**
+
+1. Salin file `.env.example` ke `.env`:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Atur koneksi database di file `.env`:
+
+   ```env
+   DB_DATABASE=db_lvinventory
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
+
+3. Generate application key:
+
+   ```bash
+   php artisan key:generate
+   ```
+
+### **4. Jalankan Migrasi dan Seeder**
+
+```bash
+php artisan migrate --seed
+```
+
+### **5. Jalankan Aplikasi**
+
+```bash
+php artisan serve
+```
+
+Buka di browser: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 🔧 **Tips Troubleshooting**
+
+- Jika terjadi masalah cache, jalankan:
+
+  ```bash
+  php artisan config:clear
+  php artisan cache:clear
+  php artisan view:clear
+  ```
+
+- Pastikan environment sudah benar pada file `.env`.
+
+---
+
+## ✨ **Kontributor**
+
+Terima kasih kepada saya yang telah berkontribusi untuk proyek ngebut ini. 😊
+
