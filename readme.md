@@ -53,7 +53,7 @@ Sistem ini adalah aplikasi manajemen inventaris berbasis Laravel. Dengan fitur C
 
 ## 📚 **Database**
 
-### **Nama Database: ****`db_lvinventory`**
+### Nama Database: **`db_lvinventory`**
 
 Tabel yang digunakan:
 
